@@ -8,15 +8,15 @@ router.get(
   "/",
   requireAuth,
   async (req: Request, res: Response, next: NextFunction) => {
-    const stores = await controller.list();
-    res.json(stores);
+    const books = await controller.list();
+    res.json(books);
   }
 );
 
 router.post("/", async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const modelstore = await controller.store(req.body);
-    res.status(201).json(modelstore);
+    const modelbook = await controller.book(req.body);
+    res.status(201).json(modelbook);
   } catch (error) {
     res.json({
       message: error,
